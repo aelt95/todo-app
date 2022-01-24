@@ -1,11 +1,10 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
-const CreateTodoList = () => {
+const TodoList = () => {
   const [isNameList, setIsNameList] = useState(false);
-  const [nameList, setNameList] = useState();
+  const [nameList, setNameList] = useState("");
   const [listTodo, setListTodo] = useState([]);
-  const nameListInput = useRef();
-  const todoRef = useRef();
+  const [todoItems, setTodoItems] = useState("");
 
   const editNameListHandler = () => {
     setIsNameList(false);
@@ -13,13 +12,12 @@ const CreateTodoList = () => {
 
   const listNameHandler = (e) => {
     e.preventDefault();
-    setNameList(nameListInput.current.value);
     setIsNameList(true);
   };
 
   const addTodoHandler = (e) => {
     e.preventDefault();
-    setListTodo([...listTodo, todoRef.current.value]);
+    setListTodo([...listTodo, todoItems]);
   };
   return (
     <div>
@@ -27,8 +25,9 @@ const CreateTodoList = () => {
         <form onSubmit={listNameHandler}>
           <input
             type="text"
-            ref={nameListInput}
             placeholder="Name your list"
+            value={nameList}
+            onChange={(e) => setNameList(e.target.value)}
           ></input>
           <button>Create</button>
         </form>
@@ -42,14 +41,15 @@ const CreateTodoList = () => {
           <form onSubmit={addTodoHandler}>
             <input
               placeholder="Add your todo"
-              ref={todoRef}
+              value={todoItems}
+              onChange={(e) => setTodoItems(e.target.value)}
               type="text"
             ></input>
             <button>Add</button>
           </form>
-          {listTodo.map((item) => {
+          {listTodo.map((item, index) => {
             return (
-              <div>
+              <div key={index}>
                 <input type="checkbox"></input>
                 <h3>{item}</h3>
               </div>
@@ -61,4 +61,4 @@ const CreateTodoList = () => {
   );
 };
 
-export default CreateTodoList;
+export default TodoList;
