@@ -1,13 +1,11 @@
-import { Fragment } from "react/cjs/react.production.min";
-
-import CreateTodoList from "./components/CreateTodoList";
+import TodoList from "./components/TodoList";
 
 function App() {
-  return (
-    <Fragment>
-      <CreateTodoList></CreateTodoList>
-    </Fragment>
-  );
+    return (
+        <>
+            <TodoList/>
+        </>
+    );
 }
 
 export default App;
