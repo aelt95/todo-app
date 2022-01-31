@@ -20,10 +20,11 @@ const TodoList = () => {
   const addTodoHandler = (e) => {
     e.preventDefault();
     setListTodo([...listTodo, todoItem]);
+    setTodoItem("");
   };
 
   return (
-    <div>
+    <>
       {!hasListName ? (
         <form onSubmit={listNameHandler}>
           <Input
@@ -56,7 +57,7 @@ const TodoList = () => {
           })}
         </div>
       )}
-    </div>
+    </>
   );
 };
 
