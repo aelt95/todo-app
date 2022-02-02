@@ -9,10 +9,10 @@ const ListItem = ({name}) => {
     // const {name} = props
     // const name = props.name
     return (
-        <>
+        <div style={{display: 'flex'}}>
             <Input type="checkbox"/>
             <h3>{name}</h3>
-        </>
+        </div>
     )
 }
 

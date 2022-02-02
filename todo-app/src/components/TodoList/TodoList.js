@@ -46,6 +46,9 @@ const TodoList = () => {
             <h1>{listName}</h1>
             <button onClick={editListNameHandler}>Edit</button>
           </div>
+          <br/>
+          <br/>
+          <h3>Todo Items:</h3>
           {renderForm(addTodoHandler, todoItem, (e) => setTodoItem(e.target.value))}
           {todoItems.map((item, index) => {
             return (
