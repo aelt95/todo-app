@@ -1,11 +1,12 @@
 import { useState } from "react";
-import ListItem from "./ListItem/ListItem";
-import Input from "./Shared/Input";
+import ListItem from "../ListItem/ListItem";
+import Input from "../Shared/Input";
 
 const TodoList = () => {
   const [hasListName, setHasListName] = useState(false);
   const [listName, setListName] = useState("");
-  const [listTodo, setListTodo] = useState([]);
+  const [todoItems, setTodoItems] = useState([]);
+  // const [listTodo, setListTodo] = useState([]);
   const [todoItem, setTodoItem] = useState("");
 
   const editListNameHandler = () => {
@@ -19,39 +20,38 @@ const TodoList = () => {
 
   const addTodoHandler = (e) => {
     e.preventDefault();
-    setListTodo([...listTodo, todoItem]);
+    setTodoItems([...todoItems, todoItem]);
     setTodoItem("");
   };
 
+  const renderForm = (handler, value, onChange) => {
+    return(
+        <form onSubmit={handler}>
+          <Input
+              value={value}
+              onChange={onChange}
+          />
+          <button type='submit'>Create</button>
+        </form>
+    )
+  }
+
+
   return (
     <>
-      {!hasListName ? (
-        <form onSubmit={listNameHandler}>
-          <Input
-            type="text"
-            value={listName}
-            onChange={(e) => setListName(e.target.value)}
-          />
-          <button>Create</button>
-        </form>
-      ) : (
+      {!hasListName ? renderForm(listNameHandler, listName, (e) => setListName(e.target.value))
+      : (
         <div>
           <div>
             <h1>{listName}</h1>
             <button onClick={editListNameHandler}>Edit</button>
           </div>
-          <form onSubmit={addTodoHandler}>
-            <Input
-              value={todoItem}
-              onChange={(e) => setTodoItem(e.target.value)}
-              type="text"
-            />
-            <button>Add</button>
-          </form>
-          {listTodo.map((item, index) => {
+          {renderForm(addTodoHandler, todoItem, (e) => setTodoItem(e.target.value))}
+          {todoItems.map((item, index) => {
             return (
               <div key={index}>
                 <ListItem name={item} />
+                {/*<TodoItem name={item} />*/}
               </div>
             );
           })}

@@ -3,9 +3,11 @@ import TodoList from "./TodoList";
 
 const TodoLists = () => {
   const [todoListStore, setTodoListStore] = useState([]);
+  // const [numberOfTodoLists, setNumberOfTodoLists] = useState(0);
 
   const newListHandler = () => {
     return setTodoListStore([...todoListStore, 1]);
+    // setNumberOfTodoLists(numberOfTodoLists+1)
   };
 
   return (

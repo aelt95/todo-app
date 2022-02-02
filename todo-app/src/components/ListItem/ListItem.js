@@ -1,3 +1,5 @@
+import Input from "../Shared/Input";
+
 const ListItem = ({name}) => {
     // props = {name: 'ivan', surname: 'matas'}
     // const name = props.name //ivan
@@ -8,7 +10,7 @@ const ListItem = ({name}) => {
     // const name = props.name
     return (
         <>
-            <input type="checkbox"/>
+            <Input type="checkbox"/>
             <h3>{name}</h3>
         </>
     )
