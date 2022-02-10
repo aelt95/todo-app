@@ -1,10 +1,10 @@
 import Input from "./Input";
 
-const Form = ({ handler, value, onChange }) => {
+const Form = ({ className, handler, value, onChange, text = "Create" }) => {
   return (
-    <form onSubmit={handler}>
+    <form onSubmit={handler} className={className}>
       <Input value={value} onChange={onChange} />
-      <button type="submit">Create</button>
+      <button type="submit">{text}</button>
     </form>
   );
 };
