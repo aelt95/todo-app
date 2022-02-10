@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ListItem from "../ListItem/ListItem";
 import Form from "../Shared/Form";
+import "../../Styles/TodoList/TodoList.css";
 
 const TodoList = () => {
   const [hasListName, setHasListName] = useState(false);
@@ -24,7 +25,7 @@ const TodoList = () => {
   };
 
   return (
-    <>
+    <div className="main">
       {!hasListName ? (
         <Form
           handler={listNameHandler}
@@ -33,12 +34,10 @@ const TodoList = () => {
         />
       ) : (
         <div>
-          <div>
+          <div className="header">
             <h1>{listName}</h1>
             <button onClick={editListNameHandler}>Edit</button>
           </div>
-          <br />
-          <h3>Todo Items:</h3>
           <Form
             handler={addTodoHandler}
             value={todoItem}
@@ -53,7 +52,7 @@ const TodoList = () => {
           })}
         </div>
       )}
-    </>
+    </div>
   );
 };
 
