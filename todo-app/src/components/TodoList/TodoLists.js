@@ -1,8 +1,9 @@
 import { useState } from "react";
 import TodoList from "./TodoList";
+import "../../Styles/TodoList/TodoList.css";
 
 const TodoLists = () => {
-  const [todoListStore, setTodoListStore] = useState([]);
+  const [todoListStore, setTodoListStore] = useState([1]);
 
   const newListHandler = () => {
     return setTodoListStore([...todoListStore, 1]);
@@ -10,11 +11,10 @@ const TodoLists = () => {
 
   return (
     <>
-      <button onClick={newListHandler}>New List</button>
       {todoListStore.map((list, index) => {
         return (
-          <div key={index}>
-            <TodoList />
+          <div className="container" key={index}>
+            <TodoList getNewList={newListHandler} />
           </div>
         );
       })}
